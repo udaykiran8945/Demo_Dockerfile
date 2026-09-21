@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VoltMart | Electrical Store</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#172033;
+}
+
+/* ================= HEADER ================= */
+
+.top-bar{
+    background:#111827;
+    color:white;
+    padding:8px 5%;
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+}
+
+header{
+    background:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+}
+
+.navbar{
+    height:75px;
+    padding:0 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:25px;
+    font-weight:bold;
+    color:#111827;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    background:#facc15;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+}
+
+.logo span{
+    color:#f59e0b;
+}
+
+.search-box{
+    flex:1;
+    max-width:600px;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    height:45px;
+    border:1px solid #ddd;
+    border-radius:25px;
+    padding:0 50px 0 20px;
+    outline:none;
+    font-size:14px;
+}
+
+.search-box button{
+    position:absolute;
+    right:5px;
+    top:5px;
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:50%;
+    background:#facc15;
+    cursor:pointer;
+}
+
+.nav-actions{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+
+.nav-action{
+    cursor:pointer;
+    text-align:center;
+    font-size:13px;
+}
+
+.nav-action .icon{
+    font-size:22px;
+}
+
+.cart-count{
+    background:#ef4444;
+    color:white;
+    border-radius:50%;
+    font-size:10px;
+    padding:3px 6px;
+    position:relative;
+    top:-12px;
+    left:-8px;
+}
+
+/* ================= CATEGORY NAV ================= */
+
+.category-nav{
+    border-top:1px solid #eee;
+    background:white;
+    overflow:auto;
+}
+
+.category-list{
+    display:flex;
+    gap:30px;
+    padding:14px 5%;
+    list-style:none;
+    white-space:nowrap;
+}
+
+.category-list li{
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+}
+
+.category-list li:hover{
+    color:#f59e0b;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:430px;
+    padding:60px 7%;
+    display:flex;
+    align-items:center;
+    background:
+    linear-gradient(110deg,#111827 45%,#1f2937 45%);
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-content{
+    width:55%;
+    z-index:2;
+}
+
+.hero-small{
+    color:#facc15;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:52px;
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#facc15;
+}
+
+.hero p{
+    color:#d1d5db;
+    line-height:1.7;
+    max-width:550px;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.btn{
+    padding:13px 25px;
+    border:none;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-primary{
+    background:#facc15;
+    color:#111827;
+}
+
+.btn-secondary{
+    background:transparent;
+    border:1px solid #6b7280;
+    color:white;
+}
+
+.hero-visual{
+    position:absolute;
+    right:8%;
+    font-size:180px;
+    opacity:.15;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    background:white;
+    padding:25px 7%;
+    gap:20px;
+}
+
+.feature{
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+.feature-icon{
+    width:48px;
+    height:48px;
+    background:#fff7cc;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:23px;
+}
+
+.feature h4{
+    font-size:14px;
+    margin-bottom:4px;
+}
+
+.feature p{
+    font-size:12px;
+    color:#6b7280;
+}
+
+/* ================= MAIN ================= */
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+}
+
+.section{
+    padding:55px 0;
+}
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.section-header h2{
+    font-size:28px;
+}
+
+.section-header p{
+    color:#6b7280;
+    margin-top:5px;
+}
+
+/* ================= CATEGORIES ================= */
+
+.category-cards{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:15px;
+}
+
+.category-card{
+    background:white;
+    padding:25px 10px;
+    text-align:center;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+    border:1px solid #eee;
+}
+
+.category-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.category-card .cat-icon{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.category-card h4{
+    font-size:14px;
+}
+
+/* ================= PRODUCTS ================= */
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.product-card{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #eee;
+    transition:.3s;
+    position:relative;
+}
+
+.product-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(0,0,0,.1);
+}
+
+.product-image{
+    height:210px;
+    background:#f8fafc;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:80px;
+    position:relative;
+}
+
+.badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:#16a34a;
+    color:white;
+    padding:5px 8px;
+    font-size:10px;
+    border-radius:4px;
+}
+
+.wishlist{
+    position:absolute;
+    right:12px;
+    top:12px;
+    background:white;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:0;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.product-info{
+    padding:18px;
+}
+
+.product-category{
+    color:#f59e0b;
+    font-size:11px;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.product-name{
+    font-size:15px;
+    font-weight:bold;
+    margin:7px 0;
+    line-height:1.4;
+}
+
+.rating{
+    color:#f59e0b;
+    font-size:13px;
+}
+
+.price{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:10px 0;
+}
+
+.current-price{
+    font-size:19px;
+    font-weight:bold;
+}
+
+.old-price{
+    color:#9ca3af;
+    text-decoration:line-through;
+    font-size:13px;
+}
+
+.add-cart{
+    width:100%;
+    padding:11px;
+    border:0;
+    border-radius:6px;
+    background:#111827;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.add-cart:hover{
+    background:#f59e0b;
+    color:#111827;
+}
+
+/* ================= DEAL BANNER ================= */
+
+.deal-banner{
+    background:linear-gradient(100deg,#facc15,#f59e0b);
+    border-radius:15px;
+    padding:35px 45px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.deal-banner h2{
+    font-size:30px;
+}
+
+.deal-banner p{
+    margin-top:8px;
+}
+
+/* ================= FILTER ================= */
+
+.shop-layout{
+    display:grid;
+    grid-template-columns:230px 1fr;
+    gap:30px;
+}
+
+.filters{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    height:max-content;
+}
+
+.filters h3{
+    margin-bottom:20px;
+}
+
+.filter-group{
+    border-top:1px solid #eee;
+    padding:18px 0;
+}
+
+.filter-group h4{
+    margin-bottom:12px;
+}
+
+.filter-group label{
+    display:block;
+    margin:9px 0;
+    font-size:13px;
+}
+
+/* ================= CART ================= */
+
+.cart-sidebar{
+    position:fixed;
+    right:-420px;
+    top:0;
+    width:400px;
+    max-width:95%;
+    height:100vh;
+    background:white;
+    z-index:3000;
+    box-shadow:-5px 0 30px rgba(0,0,0,.2);
+    transition:.3s;
+    display:flex;
+    flex-direction:column;
+}
+
+.cart-sidebar.active{
+    right:0;
+}
+
+.cart-header{
+    padding:20px;
+    border-bottom:1px solid #eee;
+    display:flex;
+    justify-content:space-between;
+}
+
+.cart-items{
+    flex:1;
+    overflow:auto;
+    padding:20px;
+}
+
+.cart-item{
+    display:flex;
+    gap:12px;
+    padding:15px 0;
+    border-bottom:1px solid #eee;
+}
+
+.cart-item-icon{
+    width:60px;
+    height:60px;
+    background:#f5f7fa;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    border-radius:8px;
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-info h4{
+    font-size:13px;
+}
+
+.cart-item-info p{
+    margin-top:6px;
+    font-weight:bold;
+}
+
+.cart-footer{
+    padding:20px;
+    border-top:1px solid #eee;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.checkout{
+    width:100%;
+    padding:14px;
+    background:#facc15;
+    border:0;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.close-cart{
+    border:0;
+    background:none;
+    font-size:24px;
+    cursor:pointer;
+}
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter{
+    background:#111827;
+    color:white;
+    padding:50px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.newsletter h2{
+    margin-bottom:8px;
+}
+
+.newsletter p{
+    color:#9ca3af;
+}
+
+.newsletter-form{
+    display:flex;
+    width:450px;
+    max-width:100%;
+}
+
+.newsletter-form input{
+    flex:1;
+    padding:14px;
+    border:none;
+    outline:none;
+}
+
+.newsletter-form button{
+    padding:14px 20px;
+    border:none;
+    background:#facc15;
+    font-weight:bold;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#0b1120;
+    color:white;
+    padding:50px 7% 20px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+footer h3{
+    margin-bottom:15px;
+}
+
+footer p{
+    color:#9ca3af;
+    line-height:1.7;
+    font-size:13px;
+}
+
+footer ul{
+    list-style:none;
+}
+
+footer li{
+    color:#9ca3af;
+    margin:10px 0;
+    font-size:13px;
+}
+
+.copyright{
+    border-top:1px solid #1f2937;
+    margin-top:40px;
+    padding-top:20px;
+    text-align:center;
+    color:#6b7280;
+    font-size:12px;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    z-index:5000;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-content{
+    background:white;
+    width:500px;
+    max-width:92%;
+    border-radius:12px;
+    padding:30px;
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.modal-header button{
+    border:0;
+    background:none;
+    font-size:22px;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:6px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:6px;
+}
+
+/* ================= MOBILE ================= */
+
+.mobile-menu{
+    display:none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+@media(max-width:1000px){
+
+    .product-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .category-cards{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .features{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    .top-bar{
+        display:none;
+    }
+
+    .navbar{
+        height:auto;
+        padding:15px;
+        flex-wrap:wrap;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .search-box{
+        order:3;
+        width:100%;
+        max-width:none;
+    }
+
+    .nav-actions{
+        gap:10px;
+    }
+
+    .nav-action span:not(.icon){
+        display:none;
+    }
+
+    .hero{
+        min-height:500px;
+        padding:45px 20px;
+        background:#111827;
+    }
+
+    .hero-content{
+        width:100%;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero-visual{
+        right:-20px;
+        bottom:30px;
+        font-size:130px;
+    }
+
+    .features{
+        grid-template-columns:1fr 1fr;
+        padding:20px;
+    }
+
+    .category-cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .product-image{
+        height:150px;
+        font-size:60px;
+    }
+
+    .product-info{
+        padding:12px;
+    }
+
+    .shop-layout{
+        grid-template-columns:1fr;
+    }
+
+    .filters{
+        display:none;
+    }
+
+    .deal-banner{
+        padding:25px;
+        display:block;
+    }
+
+    .newsletter{
+        display:block;
+        padding:40px 20px;
+    }
+
+    .newsletter-form{
+        margin-top:20px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:450px){
+
+    .product-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .product-name{
+        font-size:13px;
+    }
+
+    .current-price{
+        font-size:16px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+    <div>⚡ India's Electrical Shopping Store</div>
+    <div>Free Delivery on Orders Above ₹999</div>
+</div>
+
+<!-- HEADER -->
+
+<header>
+
+<nav class="navbar">
+
+    <div class="logo">
+        <div class="logo-icon">⚡</div>
+        Volt<span>Mart</span>
+    </div>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search switches, wires, MCBs, lights..."
+            onkeyup="searchProducts()"
+        >
+        <button>🔍</button>
+    </div>
+
+    <div class="nav-actions">
+
+        <div class="nav-action">
+            <div class="icon">👤</div>
+            <span>Account</span>
+        </div>
+
+        <div class="nav-action">
+            <div class="icon">❤️</div>
+            <span>Wishlist</span>
+        </div>
+
+        <div class="nav-action" onclick="openCart()">
+            <div class="icon">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+            <span>Cart</span>
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="category-nav">
+<ul class="category-list">
+    <li onclick="filterCategory('all')">All Products</li>
+    <li onclick="filterCategory('lighting')">💡 Lighting</li>
+    <li onclick="filterCategory('switches')">🔌 Switches</li>
+    <li onclick="filterCategory('wires')">🔋 Wires & Cables</li>
+    <li onclick="filterCategory('protection')">⚡ MCB & Protection</li>
+    <li onclick="filterCategory('fans')">🌀 Fans</li>
+    <li onclick="filterCategory('tools')">🛠 Electrical Tools</li>
+    <li onclick="filterCategory('accessories')">🔧 Accessories</li>
+</ul>
+</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            Premium Electrical Products
+        </div>
+
+        <h1>
+            Power Your Home.<br>
+            <span>Power Your Life.</span>
+        </h1>
+
+        <p>
+            Shop premium electrical products for your home,
+            office and industrial requirements. Quality products,
+            trusted brands and fast delivery.
+        </p>
+
+        <div class="hero-buttons">
+            <button class="btn btn-primary"
+                    onclick="document.getElementById('products').scrollIntoView()">
+                Shop Now →
+            </button>
+
+            <button class="btn btn-secondary"
+                    onclick="document.getElementById('categories').scrollIntoView()">
+                Explore Categories
+            </button>
+        </div>
+
+    </div>
+
+    <div class="hero-visual">
+        ⚡
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+    <div class="feature">
+        <div class="feature-icon">🚚</div>
+        <div>
+            <h4>Fast Delivery</h4>
+            <p>Across India</p>
+        </div>
+    </div>
+
+    <div class="feature">
+        <div class="feature-icon">🛡️</div>
+        <div>
+            <h4>Genuine Products</h4>
+            <p>100% Original</p>
+        </div>
+    </div>
+
+    <div class="feature">
+        <div class="feature-icon">💳</div>
+        <div>
+            <h4>Secure Payment</h4>
+            <p>100% Safe Checkout</p>
+        </div>
+    </div>
+
+    <div class="feature">
+        <div class="feature-icon">📞</div>
+        <div>
+            <h4>Expert Support</h4>
+            <p>We're here to help</p>
+        </div>
+    </div>
+
+</section>
+
+
+<main class="container">
+
+
+<!-- CATEGORIES -->
+
+<section class="section" id="categories">
+
+    <div class="section-header">
+        <div>
+            <h2>Shop by Category</h2>
+            <p>Everything you need for electrical work</p>
+        </div>
+    </div>
+
+    <div class="category-cards">
+
+        <div class="category-card"
+             onclick="filterCategory('lighting')">
+            <div class="cat-icon">💡</div>
+            <h4>Lighting</h4>
+        </div>
+
+        <div class="category-card"
+             onclick="filterCategory('switches')">
+            <div class="cat-icon">🔌</div>
+            <h4>Switches & Sockets</h4>
+        </div>
+
+        <div class="category-card"
+             onclick="filterCategory('wires')">
+            <div class="cat-icon">🔋</div>
+            <h4>Wires & Cables</h4>
+        </div>
+
+        <div class="category-card"
+             onclick="filterCategory('protection')">
+            <div class="cat-icon">⚡</div>
+            <h4>MCB & Protection</h4>
+        </div>
+
+        <div class="category-card"
+             onclick="filterCategory('fans')">
+            <div class="cat-icon">🌀</div>
+            <h4>Fans</h4>
+        </div>
+
+        <div class="category-card"
+             onclick="filterCategory('tools')">
+            <div class="cat-icon">🛠️</div>
+            <h4>Electrical Tools</h4>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DEAL -->
+
+<section>
+
+<div class="deal-banner">
+
+    <div>
+        <h2>⚡ Power Deals Up To 40% OFF</h2>
+        <p>Upgrade your electrical setup without breaking the bank.</p>
+    </div>
+
+    <button class="btn"
+            style="background:#111827;color:white"
+            onclick="document.getElementById('products').scrollIntoView()">
+        View Deals
+    </button>
+
+</div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="section" id="products">
+
+<div class="section-header">
+
+    <div>
+        <h2>Popular Electrical Products</h2>
+        <p>Best-selling products for your home and business</p>
+    </div>
+
+</div>
+
+
+<div class="shop-layout">
+
+    <!-- FILTER -->
+
+    <aside class="filters">
+
+        <h3>Filters</h3>
+
+        <div class="filter-group">
+
+            <h4>Category</h4>
+
+            <label>
+                <input type="checkbox"
+                       onchange="filterCategory('lighting')">
+                Lighting
+            </label>
+
+            <label>
+                <input type="checkbox"
+                       onchange="filterCategory('switches')">
+                Switches
+            </label>
+
+            <label>
+                <input type="checkbox"
+                       onchange="filterCategory('wires')">
+                Wires
+            </label>
+
+            <label>
+                <input type="checkbox"
+                       onchange="filterCategory('protection')">
+                MCB
+            </label>
+
+            <label>
+                <input type="checkbox"
+                       onchange="filterCategory('fans')">
+                Fans
+            </label>
+
+        </div>
+
+        <div class="filter-group">
+
+            <h4>Price</h4>
+
+            <label>
+                <input type="checkbox"
+                       onchange="filterPrice(500)">
+                Under ₹500
+            </label>
+
+            <label>
+                <input type="checkbox"
+                       onchange="filterPrice(1000)">
+                Under ₹1,000
+            </label>
+
+            <label>
+                <input type="checkbox"
+                       onchange="filterPrice(5000)">
+                Under ₹5,000
+            </label>
+
+        </div>
+
+    </aside>
+
+
+    <!-- PRODUCT GRID -->
+
+    <div class="product-grid" id="productGrid">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div class="product-card"
+             data-category="lighting"
+             data-name="9W LED Bulb"
+             data-price="149">
+
+            <div class="product-image">
+
+                <span class="badge">BESTSELLER</span>
+
+                <button class="wishlist"
+                        onclick="wishlist(this)">
+                    ♡
+                </button>
+
+                💡
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    Lighting
+                </div>
+
+                <div class="product-name">
+                    Philips 9W LED Bulb
+                </div>
+
+                <div class="rating">
+                    ★★★★★ (124)
+                </div>
+
+                <div class="price">
+                    <span class="current-price">₹149</span>
+                    <span class="old-price">₹199</span>
+                </div>
+
+                <button class="add-cart"
+                        onclick="addToCart('Philips 9W LED Bulb',149,'💡')">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="product-card"
+             data-category="switches"
+             data-name="Modular Switch"
+             data-price="89">
+
+            <div class="product-image">
+
+                <span class="badge">POPULAR</span>
+
+                <button class="wishlist"
+                        onclick="wishlist(this)">
+                    ♡
+                </button>
+
+                🔘
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    Switches
+                </div>
+
+                <div class="product-name">
+                    Modular 6A Switch
+                </div>
+
+                <div class="rating">
+                    ★★★★★ (87)
+                </div>
+
+                <div class="price">
+                    <span class="current-price">₹89</span>
+                    <span class="old-price">₹120</span>
+                </div>
+
+                <button class="add-cart"
+                        onclick="addToCart('Modular 6A Switch',89,'🔘')">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+
+        <div class="product-card"
+             data-category="protection"
+             data-name="MCB 32A"
+             data-price="349">
+
+            <div class="product-image">
+
+                <span class="badge">SALE</span>
+
+                <button class="wishlist"
+                        onclick="wishlist(this)">
+                    ♡
+                </button>
+
+                ⚡
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    MCB & Protection
+                </div>
+
+                <div class="product-name">
+                    32A Single Pole MCB
+                </div>
+
+                <div class="rating">
+                    ★★★★★ (65)
+                </div>
+
+                <div class="price">
+                    <span class="current-price">₹349</span>
+                    <span class="old-price">₹450</span>
+                </div>
+
+                <button class="add-cart"
+                        onclick="addToCart('32A Single Pole MCB',349,'⚡')">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 4 -->
+
+        <div class="product-card"
+             data-category="wires"
+             data-name="Copper Wire"
+             data-price="1799">
+
+            <div class="product-image">
+
+                <button class="wishlist"
+                        onclick="wishlist(this)">
+                    ♡
+                </button>
+
+                🔌
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    Wires & Cables
+                </div>
+
+                <div class="product-name">
+                    1.5 Sqmm Copper Wire 90m
+                </div>
+
+                <div class="rating">
+                    ★★★★★ (43)
+                </div>
+
+                <div class="price">
+                    <span class="current-price">₹1,799</span>
+                    <span class="old-price">₹2,100</span>
+                </div>
+
+                <button class="add-cart"
+                        onclick="addToCart('1.5 Sqmm Copper Wire 90m',1799,'🔌')">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 5 -->
+
+        <div class="product-card"
+             data-category="fans"
+             data-name="Ceiling Fan"
+             data-price="2499">
+
+            <div class="product-image">
+
+                <span class="badge">HOT</span>
+
+                <button class="wishlist"
+                        onclick="wishlist(this)">
+                    ♡
+                </button>
+
+                🌀
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    Fans
+                </div>
+
+                <div class="product-name">
+                    1200mm High Speed Ceiling Fan
+                </div>
+
+                <div class="rating">
+                    ★★★★★ (91)
+                </div>
+
+                <div class="price">
+                    <span class="current-price">₹2,499</span>
+                    <span class="old-price">₹3,199</span>
+                </div>
+
+                <button class="add-cart"
+                        onclick="addToCart('1200mm Ceiling Fan',2499,'🌀')">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 6 -->
+
+        <div class="product-card"
+             data-category="lighting"
+             data-name="LED Panel Light"
+             data-price="499">
+
+            <div class="product-image">
+
+                <button class="wishlist"
+                        onclick="wishlist(this)">
+                    ♡
+                </button>
+
+                🔆
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    Lighting
+                </div>
+
+                <div class="product-name">
+                    18W Square LED Panel Light
+                </div>
+
+                <div class="rating">
+                    ★★★★★ (54)
+                </div>
+
+                <div class="price">
+                    <span class="current-price">₹499</span>
+                    <span class="old-price">₹699</span>
+                </div>
+
+                <button class="add-cart"
+                        onclick="addToCart('18W Square LED Panel Light',499,'🔆')">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 7 -->
+
+        <div class="product-card"
+             data-category="accessories"
+             data-name="Extension Board"
+             data-price="599">
+
+            <div class="product-image">
+
+                <span class="badge">NEW</span>
+
+                <button class="wishlist"
+                        onclick="wishlist(this)">
+                    ♡
+                </button>
+
+                🔋
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    Accessories
+                </div>
+
+                <div class="product-name">
+                    6 Socket Extension Board
+                </div>
+
+                <div class="rating">
+                    ★★★★★ (37)
+                </div>
+
+                <div class="price">
+                    <span class="current-price">₹599</span>
+                    <span class="old-price">₹799</span>
+                </div>
+
+                <button class="add-cart"
+                        onclick="addToCart('6 Socket Extension Board',599,'🔋')">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 8 -->
+
+        <div class="product-card"
+             data-category="tools"
+             data-name="Digital Multimeter"
+             data-price="799">
+
+            <div class="product-image">
+
+                <button class="wishlist"
+                        onclick="wishlist(this)">
+                    ♡
+                </button>
+
+                🛠️
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    Electrical Tools
+                </div>
+
+                <div class="product-name">
+                    Digital Multimeter
+                </div>
+
+                <div class="rating">
+                    ★★★★★ (112)
+                </div>
+
+                <div class="price">
+                    <span class="current-price">₹799</span>
+                    <span class="old-price">₹999</span>
+                </div>
+
+                <button class="add-cart"
+                        onclick="addToCart('Digital Multimeter',799,'🛠️')">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+<div>
+    <h2>Get Electrical Deals in Your Inbox</h2>
+    <p>Subscribe for offers, new products and electrical tips.</p>
+</div>
+
+<div class="newsletter-form">
+    <input type="email" placeholder="Enter your email">
+    <button>Subscribe</button>
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-grid">
+
+    <div>
+
+        <div class="logo">
+            <div class="logo-icon">⚡</div>
+            Volt<span>Mart</span>
+        </div>
+
+        <br>
+
+        <p>
+            Your trusted online destination for electrical
+            products, home electrical solutions and professional
+            electrical tools.
+        </p>
+
+    </div>
+
+    <div>
+
+        <h3>Shop</h3>
+
+        <ul>
+            <li>Lighting</li>
+            <li>Switches</li>
+            <li>Wires & Cables</li>
+            <li>MCB & Protection</li>
+            <li>Fans</li>
+        </ul>
+
+    </div>
+
+    <div>
+
+        <h3>Customer Care</h3>
+
+        <ul>
+            <li>Contact Us</li>
+            <li>Shipping Policy</li>
+            <li>Returns</li>
+            <li>Warranty</li>
+            <li>FAQs</li>
+        </ul>
+
+    </div>
+
+    <div>
+
+        <h3>Contact</h3>
+
+        <ul>
+            <li>📞 +91 98765 43210</li>
+            <li>📧 support@voltmart.in</li>
+            <li>📍 Andhra Pradesh, India</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="copyright">
+    © 2026 VoltMart. All Rights Reserved.
+</div>
+
+</footer>
+
+
+<!-- CART -->
+
+<div class="cart-sidebar" id="cartSidebar">
+
+    <div class="cart-header">
+
+        <h2>Shopping Cart</h2>
+
+        <button class="close-cart"
+                onclick="closeCart()">
+            ×
+        </button>
+
+    </div>
+
+    <div class="cart-items" id="cartItems">
+
+        <p style="text-align:center;color:#777;margin-top:50px">
+            Your cart is empty.
+        </p>
+
+    </div>
+
+    <div class="cart-footer">
+
+        <div class="total">
+
+            <span>Total</span>
+
+            <span id="cartTotal">
+                ₹0
+            </span>
+
+        </div>
+
+        <button class="checkout"
+                onclick="openCheckout()">
+            Proceed to Checkout
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- CHECKOUT MODAL -->
+
+<div class="modal" id="checkoutModal">
+
+<div class="modal-content">
+
+    <div class="modal-header">
+
+        <h2>Checkout</h2>
+
+        <button onclick="closeCheckout()">
+            ×
+        </button>
+
+    </div>
+
+    <form onsubmit="placeOrder(event)">
+
+        <div class="form-group">
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                placeholder="Enter your name"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Mobile Number</label>
+
+            <input
+                type="tel"
+                placeholder="+91"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Delivery Address</label>
+
+            <textarea
+                rows="3"
+                placeholder="Enter your complete address"
+                required></textarea>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Payment Method</label>
+
+            <select required>
+
+                <option value="">
+                    Select Payment
+                </option>
+
+                <option>
+                    Cash on Delivery
+                </option>
+
+                <option>
+                    UPI
+                </option>
+
+                <option>
+                    Credit / Debit Card
+                </option>
+
+            </select>
+
+        </div>
+
+        <button
+            class="checkout"
+            type="submit">
+
+            Place Order
+
+        </button>
+
+    </form>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ================= CART ================= */
+
+let cart = [];
+
+function addToCart(name, price, icon){
+
+    const existing = cart.find(item => item.name === name);
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+            name:name,
+            price:price,
+            icon:icon,
+            quantity:1
+        });
+
+    }
+
+    updateCart();
+
+    openCart();
+}
+
+
+function updateCart(){
+
+    const cartItems =
+        document.getElementById("cartItems");
+
+    const cartCount =
+        document.getElementById("cartCount");
+
+    const cartTotal =
+        document.getElementById("cartTotal");
+
+    let total = 0;
+    let count = 0;
+
+    if(cart.length === 0){
+
+        cartItems.innerHTML = `
+            <p style="
+            text-align:center;
+            color:#777;
+            margin-top:50px">
+            Your cart is empty.
+            </p>
+        `;
+
+    }else{
+
+        cartItems.innerHTML = "";
+
+        cart.forEach((item,index)=>{
+
+            total += item.price * item.quantity;
+            count += item.quantity;
+
+            cartItems.innerHTML += `
+
+            <div class="cart-item">
+
+                <div class="cart-item-icon">
+                    ${item.icon}
+                </div>
+
+                <div class="cart-item-info">
+
+                    <h4>
+                        ${item.name}
+                    </h4>
+
+                    <p>
+                        ₹${item.price.toLocaleString()}
+                    </p>
+
+                    <div style="
+                    margin-top:8px;
+                    display:flex;
+                    gap:8px;
+                    align-items:center">
+
+                        <button
+                        onclick="changeQuantity(${index},-1)"
+                        style="border:1px solid #ddd;
+                        background:white;
+                        width:25px">
+                        −
+                        </button>
+
+                        ${item.quantity}
+
+                        <button
+                        onclick="changeQuantity(${index},1)"
+                        style="border:1px solid #ddd;
+                        background:white;
+                        width:25px">
+                        +
+                        </button>
+
+                        <button
+                        onclick="removeCart(${index})"
+                        style="border:0;
+                        background:none;
+                        color:red;
+                        margin-left:auto">
+                        Remove
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            `;
+
+        });
+
+    }
+
+    cartCount.innerText = count;
+
+    cartTotal.innerText =
+        "₹" + total.toLocaleString();
+
+}
+
+
+function changeQuantity(index,value){
+
+    cart[index].quantity += value;
+
+    if(cart[index].quantity <= 0){
+
+        cart.splice(index,1);
+
+    }
+
+    updateCart();
+
+}
+
+
+function removeCart(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+}
+
+
+function openCart(){
+
+    document
+        .getElementById("cartSidebar")
+        .classList.add("active");
+
+}
+
+
+function closeCart(){
+
+    document
+        .getElementById("cartSidebar")
+        .classList.remove("active");
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function searchProducts(){
+
+    const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    const products =
+        document.querySelectorAll(".product-card");
+
+    products.forEach(product => {
+
+        const name =
+            product.dataset.name.toLowerCase();
+
+        if(name.includes(search)){
+
+            product.style.display = "";
+
+        }else{
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* ================= CATEGORY ================= */
+
+function filterCategory(category){
+
+    const products =
+        document.querySelectorAll(".product-card");
+
+    products.forEach(product => {
+
+        if(category === "all"){
+
+            product.style.display = "";
+
+        }else{
+
+            if(product.dataset.category === category){
+
+                product.style.display = "";
+
+            }else{
+
+                product.style.display = "none";
+
+            }
+
+        }
+
+    });
+
+    document
+        .getElementById("products")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* ================= PRICE ================= */
+
+function filterPrice(maxPrice){
+
+    const products =
+        document.querySelectorAll(".product-card");
+
+    products.forEach(product => {
+
+        const price =
+            Number(product.dataset.price);
+
+        if(price <= maxPrice){
+
+            product.style.display = "";
+
+        }else{
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* ================= WISHLIST ================= */
+
+function wishlist(button){
+
+    if(button.innerText === "♡"){
+
+        button.innerText = "♥";
+
+    }else{
+
+        button.innerText = "♡";
+
+    }
+
+}
+
+
+/* ================= CHECKOUT ================= */
+
+function openCheckout(){
+
+    if(cart.length === 0){
+
+        alert("Your cart is empty!");
+
+        return;
+
+    }
+
+    document
+        .getElementById("checkoutModal")
+        .classList.add("active");
+
+}
+
+
+function closeCheckout(){
+
+    document
+        .getElementById("checkoutModal")
+        .classList.remove("active");
+
+}
+
+
+function placeOrder(event){
+
+    event.preventDefault();
+
+    alert(
+        "🎉 Order placed successfully! Thank you for shopping with VoltMart."
+    );
+
+    cart = [];
+
+    updateCart();
+
+    closeCheckout();
+
+    closeCart();
+
+}
+
+
+/* ================= INITIALIZE ================= */
+
+updateCart();
+
+</script>
+
+</body>
+</html>
