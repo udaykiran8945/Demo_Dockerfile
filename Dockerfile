@@ -1,0 +1,5 @@
+FROM ubuntu
+COPY . .
+EXPOSE 80
+MAINTAINER Uday Kiran
+
